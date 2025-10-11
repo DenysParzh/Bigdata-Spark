@@ -1,16 +1,18 @@
-from pyspark.sql import SparkSession
+import findspark
+
+from core import session
+from task_1 import count_words
+
+findspark.init()
 
 
 def main():
-    spark = (
-        SparkSession.builder
-        .appName("Datacamp Pyspark Tutorial")
-        .config("spark.memory.offHeap.enabled", "true")
-        .config("spark.memory.offHeap.size", "10g")
-        .getOrCreate()
-    )
+    spark_session = session.build()
+    spark_context = spark_session.sparkContext
 
-    print(spark.sparkContext.appName)
+    text_resources = spark_context.textFile("*.txt")
+
+    count_words(text_resources)
 
 
 if __name__ == "__main__":
