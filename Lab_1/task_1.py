@@ -1,8 +1,4 @@
-import re
-
-
-def text_preprocessing(text: str) -> str:
-    return re.sub(r"[^\w\s]", "", text.lower())
+from core.utils import text_preprocessing
 
 
 def mapper(line: str) -> list[tuple[str, int]]:
