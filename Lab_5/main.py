@@ -1,11 +1,5 @@
+from core.utils import load_vocabulary
 from tokenizer import Tokenizer
-
-
-def load_vocabulary(path):
-    with open(path, 'r', encoding='utf-8') as file:
-        vocabulary = file.read()
-
-    return vocabulary
 
 
 def test1(tokenizer):
